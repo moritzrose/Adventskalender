@@ -3,6 +3,7 @@ let doors = document.querySelectorAll(".door")
 const currentDate = new Date();
 
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+let events = ["🎄","⛄","🛷","🦌","❄️","🎁","🎅","🌟","🕯️","🔔","🍫","🤶🏼","🐕","🍪","🍬","🍦","🎂","🍨","🍭","🧸","🪁","🎷","💐","🕹️",]
 numbers.sort((a, b) => 0.5 - Math.random());
 for (let door of doors) {
     let doorNumber = numbers.pop()
@@ -16,9 +17,14 @@ for (let door of doors) {
             if (doorNumber > currentDay){
                 alert("You still have to wait " + (doorNumber - currentDay) + " days, to open that :)")
             }
-            if (doorNumber < currentDay){
-                alert("Door opened!")
+            if (doorNumber <= currentDay){
+                door.innerText = events[doorNumber]
             }
         }
     })
 }
+
+document.body.addEventListener("click", () => {
+    let audio = document.getElementById("music")
+    audio.play()
+})
